@@ -64,13 +64,7 @@
       type: jsPsychExternalHtml,
       url: 'external_html/simple_consent.html',
       cont_btn: 'start',
-      check_fn: function() {
-        if (document.getElementById('consent_checkbox').checked) {
-          return true;
-        } else {
-          alert('You must tick the checkbox to continue with the study.')
-        }
-      }
+      check_fn: function(){ return true; }
     };
 
   var trial_4 = {

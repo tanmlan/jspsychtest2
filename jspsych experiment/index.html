@@ -62,17 +62,23 @@
     };
 
     var trial_3 = {
-      type: jsPsychExternalHtml,
-      url: 'jspsychtest2/jspsych experiment/external_html/simple_consent.html',
-      cont_btn: 'start',
-      check_fn: function() {
-        if (document.getElementById('consent_checkbox').checked) {
-          return true;
-        } else {
-          alert('You must tick the checkbox to continue with the study.')
-        }
-      }
-    };
+    if (document.getElementById('consent_checkbox').checked) {
+        return true;
+    }
+    else {
+        alert("If you wish to participate, you must check the box next to the statement 'I agree to participate in this study.'");
+        return false;
+    }
+    return false;
+};
+
+// declare the block.
+var trial = {
+    type: jsPsychExternalHtml,
+    url: "external_page.html",
+    cont_btn: "start",
+    check_fn: check_consent
+};
 
     var trial_4 = {
       type: jsPsychHtmlKeyboardResponse,

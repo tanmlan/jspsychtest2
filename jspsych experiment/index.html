@@ -29,34 +29,31 @@
 
   var pre_trial = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: '<div style="max-width:600px;"><p>你好，开始实验吧！！</p></div>',
+    stimulus: '<div style="max-width:600px;"><p>你好，欢迎参与实验！</p></div>',
     choices: ['点击继续']
   };
 
   var trial_1 = {
     type: jsPsychVideoButtonResponse,
-    stimulus: ['video/sample_video.mp4'],
-    choices: ['Y','N'],
+    stimulus: ['video/flower.mp4'],
+    choices: ['Y'],
     margin_vertical: '10px',
     margin_horizontal: '8px',
-    prompt: 'Press Y or N',
+    prompt: '请观看以上视频，观看结束后请点击按钮“Y”',
     width: 600,
     //height: 600,
     autoplay: true,
     //controls: true,
     //start: 8,
     //stop: 9,
-    rate: 1.5,
-    //trial_duration: 2000,
+    rate: 1,
+    //trial_duration: null,
     response_ends_trial: true
   };
 
   var trial_2 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<p>This is a normal jsPsych trial.</p>'+
-      '<p>Note that this example will NOT work if you opened the HTML file directly in the browser<br>'+
-      '(e.g. by double-clicking on it) because the external HTML page will be blocked by CORS policy.</p>'+
-      '<p>If you are hosting the files on a server, then the next trial will display an external HTML page.</p>'+
+      stimulus: '<p>接下来进入到下一环节</p>'+
       '<p>Press any key to continue.</p>'
     };
 
@@ -68,18 +65,21 @@
         if (document.getElementById('consent_checkbox').checked) {
           return true;
         } else {
-          alert('You must tick the checkbox to continue with the study.')
+          alert('您必须勾选复选框才能继续。')
         }
       }
     };
 
   var trial_4 = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: 'This is another normal jsPsych trial.'
+      type: jsPsychHtmlButtonResponse,
+      stimulus: '5秒后结束实验，您可以回到上一个窗口继续下一个环节。',
+      choices: ['OK'],
+      trial_duration: 5000,
+      response_ends_trial: true,
+      prompt: "<p> </p>"
     };
 
   jsPsych.run([preload, pre_trial, trial_1, trial_2, trial_3, trial_4]);
 
 </script>
 </html>
-

@@ -19,14 +19,11 @@
 <body></body>
 <script>
 
-  var jsPsych = initJsPsych({
-    on_finish: function() {
-      jsPsych.data.displayData();
+  const jsPsych = initJsPsych({
       extensions: [
         {type: Naodao}
       ]
-    }
-  });
+    });
 
   // preloading videos only works when the file is running on a server
   // if you run this experiment by opening the file directly in the browser, 

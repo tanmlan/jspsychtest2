@@ -83,7 +83,13 @@
       type: jsPsychExternalHtml,
       url: 'question.html',
       cont_btn: 'start',
-      check_fn: null
+      check_fn: function() {
+        if (document.getElementById('consent_checkbox').checked) {
+          return true;
+        } else {
+          alert('您必须勾选复选框才能继续。')
+        }
+      }
     };
 
   var trial_5 = {

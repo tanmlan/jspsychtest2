@@ -4,17 +4,13 @@
     <meta charset="utf-8">
     <title>实验</title>
     
-    <script src="https://www.naodao.com/public/experiment/libs/jspsych-7/jspsych.js"></script>
-    <script src="https://www.naodao.com/public/experiment/libs/plugin/plugin-video-button-response.js"></script>
-    <script src="https://www.naodao.com/public/experiment/libs/plugin/plugin-html-button-response.js"></script>
-    <script src="https://www.naodao.com/public/experiment/libs/plugin/plugin-html-keyboard-response.js"></script>
-    <script src="https://www.naodao.com/public/experiment/libs/plugin/plugin-external-html.js"></script>
-    <script src="https://www.naodao.com/public/experiment/libs/plugin/plugin-preload.js"></script>
-    
-    <script src="https://www.naodao.com/public/experiment/libs/extension/naodao-2021-12.js"></script>
-    <script src="https://www.naodao.com/public/experiment/libs/axios.min.js"></script>
-
-    <link rel="stylesheet" href="https://www.naodao.com/public/experiment/libs/jspsych-7/css/jspsych.css">
+    <script src="../dist/jspsych.js"></script>
+    <script src="../dist/plugin-video-button-response.js"></script>
+    <script src="../dist/plugin-html-button-response.js"></script>
+    <script src="../dist/plugin-html-keyboard-response.js"></script>
+    <script src="../dist/plugin-external-html.js"></script>
+    <script src="../dist/plugin-preload.js"></script>
+    <link rel="stylesheet" href="../dist/jspsych.css">
 </head>
 <body></body>
 <script>
@@ -22,9 +18,6 @@
   var jsPsych = initJsPsych({
     on_finish: function() {
       jsPsych.data.displayData();
-      extensions: [
-        {type: Naodao}
-      ]
     }
   });
 
@@ -50,7 +43,7 @@
 
   var trial_2 = {
     type: jsPsychVideoButtonResponse,
-    stimulus: ['video/Ad1c.m4v'],
+    stimulus: ['video/Ad1c.mp4'],
     choices: ['Y'],
     margin_vertical: '10px',
     margin_horizontal: '8px',
@@ -111,9 +104,6 @@
       trial_duration: 5000,
       response_ends_trial: true,
       prompt: "<p> </p>",
-      extensions: [
-      {type: Naodao}
-    ]
     };
 
   jsPsych.run([preload, pre_trial, trial_1, trial_2, trial_3, trial_4, trial_5, trial_6, trial_7]);

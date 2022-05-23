@@ -31,23 +31,25 @@
 
   var pre_trial = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: '<div style="max-width:600px;"><p>您好，感谢您来参加此次试验！请认真阅读以下指导语：</p><p>这是一个游戏实验，本次实验分为3大部分：第一部分，先观看一则30秒的广告视频；第二部分，游玩小游戏；第三部分，填写问卷。整个实验流程大约需要花费10分钟的时间。</p><p>明白上述指导语后，请点击“开始实验”按钮进入实验。</p></div>',
+    stimulus: '<div style="max-width:600px;"><p>您好，感谢您来参加此次试验！请认真阅读以下指导语：</p><br><p>①这是一个游戏实验，本次实验分为3大部分：第一部分，先观看一则30秒的广告视频；第二部分，游玩小游戏；第三部分，填写问卷。整个实验流程大约需要花费10分钟的时间。</p><p>②实验和问卷均以匿名方式填写且内容严格保密，请放心作答。</p><br><p>明白上述指导语后，请点击“开始实验”按钮进入实验。</p></div>',
     choices: ['开始实验']
   };
 
   var trial_1 = {
       type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<p>第一部分：观看广告。</p><p>在下一页中，您将需要观看一则30秒的广告视频。</p>'+
-      '<p>准备好后，请按p键进入下一页。</p>'
+      stimulus: '<p>第一部分：观看广告。</p>'+
+      '<p>5秒后进入广告……</p>',
+      trial_duration: 5000,
+      response_ends_trial: false,
     };
 
   var trial_2 = {
     type: jsPsychVideoButtonResponse,
     stimulus: ['video/Ad2c.mp4'],
-    choices: ['Y'],
+    choices: [],
     margin_vertical: '10px',
     margin_horizontal: '8px',
-    prompt: '观看结束后请点击“Y”',
+    prompt: '',
     width: 600,
     //height: 600,
     autoplay: true,
@@ -55,58 +57,34 @@
     //start: 8,
     //stop: 9,
     rate: 1,
-    //trial_duration: null,
+    trial_duration: 32000,
     response_ends_trial: true
   };
 
   var trial_3 = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<p>第二部分：玩个小游戏。</p><p>在下一页中，您需要点击“开始游戏”按钮进行游戏，请确保进行5分钟的游戏时间。</p>'+
-      '<p>准备好后，请按p键进入下一页。</p>'
-    };
-
-  var trial_4 = {
       type: jsPsychExternalHtml,
       url: 'zgamepage.html',
       cont_btn: 'start',
-      check_fn: function() {
-        if (document.getElementById('consent_checkbox').checked) {
-          return true;
-        } else {
-          alert('您必须勾选复选框才能继续。')
-        }
-      }
+      check_fn: function(){ return true; }
     };
 
-    var trial_5 = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: '<p>第三部分：填写问卷。</p><p>在下一页中，您需要点击“打开问卷”按钮进行问卷填写。</p>'+
-      '<p>准备好后，请按p键进入下一页。</p>'
-    };
-
-    var trial_6 = {
+    var trial_4 = {
       type: jsPsychExternalHtml,
-      url: 'question2.html',
+      url: 'question1.html',
       cont_btn: 'start',
-      check_fn: function() {
-        if (document.getElementById('consent_checkbox').checked) {
-          return true;
-        } else {
-          alert('您必须勾选复选框才能继续。')
-        }
-      }
+      check_fn: function(){ return true; }
     };
 
-  var trial_7 = {
+  var trial_5 = {
       type: jsPsychHtmlButtonResponse,
       stimulus: '实验结束，感谢您的参与和配合！（5秒后结束实验）',
-      choices: ['OK'],
+      choices: [],
       trial_duration: 5000,
       response_ends_trial: true,
       prompt: "<p> </p>",
     };
 
-  jsPsych.run([preload, pre_trial, trial_1, trial_2, trial_3, trial_4, trial_5, trial_6, trial_7]);
+  jsPsych.run([preload, pre_trial, trial_1, trial_2, trial_3, trial_4, trial_5]);
 
 </script>
 </html>
